@@ -1,0 +1,38 @@
+version: "3.3"
+services:
+  db:
+    container_name: coolmovies-db
+    restart: unless-stopped
+    image: coolmovies-db
+    build:
+      context: ./db
+    volumes:
+      - db:/var/lib/postgresql/data
+    env_file:
+      - ./.env
+    networks:
+      - network
+    ports:
+      - 5432:5432
+
+  graphql:
+    container_name: coolmovies-graphql
+    restart: always
+    image: coolmovies-graphql
+    build:
+        context: ./graphql
+    env_file:
+        - ./.env
+    depends_on:
+        - db
+    networks:
+        - network
+    ports:
+        - 5000:5000
+    command: ["--connection", "${DATABASE_URL}", "--port", "5000", "--schema", "public", "--append-plugins", "postgraphile-plugin-connection-filter", "--enhance-graphiql"]
+
+networks:
+  network:
+
+volumes:
+  db:
