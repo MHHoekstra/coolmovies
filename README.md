@@ -43,7 +43,7 @@ https://docs.docker.com/compose/install/
 
 Wait for a log message like this: `PostGraphile v4.12.3 server listening on port 5000`
 
-Not try to connect to GraphiQL: http://localhost:5000/graphiql
+Now try to connect to GraphiQL: http://localhost:5000/graphiql
 
 ## Play around with some examples
 Now that your backend is working, you can play around with some queries and mutation that we already built as example. Keep in mind that running mutations here you will be actually mutating the data in your backend, but don't worry if you have an accident! In the next section we explain you how to reset your server database.
