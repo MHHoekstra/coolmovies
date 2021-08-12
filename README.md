@@ -61,7 +61,7 @@ Go to the `backend` folder using your preferred terminal, then:
 
     docker-compose down
     docker volume rm coolmovies-backend_db
-    docker rmi coolmovies-db:latest
+    docker rmi coolmovies-backend_db:latest
     docker-compose up
 
 If you want also to rebuild the Postgraphile Server, run this before the `up` command.
