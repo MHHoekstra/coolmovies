@@ -38,7 +38,7 @@ https://docs.docker.com/compose/install/
 
 ## Running the server
 
-    cd backend
+    cd coolmovies-backend
     docker-compose up
 
 Wait for a log message like this: `PostGraphile v4.12.3 server listening on port 5000`
@@ -57,11 +57,11 @@ Once that you have it running, you can import Insomnia_Collection.json from the 
 ## Reinitializing the database with seed data
 So you were playing with the mutations and deleted something you shouldn't, no problem!
 
-Go to the `backend` folder using your preferred terminal, then:
+Go to the `coolmovies-backend` folder using your preferred terminal, then:
 
     docker-compose down
     docker volume rm coolmovies-backend_db
-    docker rmi coolmovies-backend_db:latest
+    docker rmi coolmovies-db:latest
     docker-compose up
 
 If you want also to rebuild the Postgraphile Server, run this before the `up` command.
