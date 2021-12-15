@@ -5,11 +5,21 @@ import { Provider as ReduxProvider } from 'react-redux';
 import Head from 'next/head';
 import { createStore } from '../redux';
 import { EnhancedStore } from '@reduxjs/toolkit';
+import {
+  ApolloClient,
+  InMemoryCache,
+  NormalizedCacheObject,
+} from '@apollo/client';
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
   const [store, setStore] = useState<EnhancedStore | null>(null);
   React.useEffect(() => {
-    const store = createStore({});
+    const client = new ApolloClient({
+      cache: new InMemoryCache(),
+      uri: 'http://localhost:5000/graphql',
+    });
+
+    const store = createStore({ epicDependencies: { client } });
     setStore(store);
   }, []);
   if (!store) return <>{'Loading...'}</>;

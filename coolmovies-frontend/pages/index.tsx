@@ -13,6 +13,12 @@ const Home: NextPage = () => {
       <span>
         {`Side Effect Count from Epic (Gets run on odd values): ${exampleState.sideEffectCount}`}
       </span>
+      <button onClick={() => dispatch(exampleActions.fetch())}>
+        {'Fetch some data'}
+      </button>
+      {exampleState.fetchData && (
+        <div>{JSON.stringify(exampleState.fetchData)}</div>
+      )}
     </div>
   );
 };

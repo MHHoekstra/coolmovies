@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 interface ExampleState {
   value: number;
   sideEffectCount: number;
+  fetchData?: unknown[];
 }
 
 const initialState: ExampleState = {
@@ -14,6 +15,13 @@ export const slice = createSlice({
   initialState,
   name: 'example',
   reducers: {
+    fetch: (state) => {},
+    loaded: (state, action: PayloadAction<{ data: unknown[] }>) => {
+      state.fetchData = action.payload.data;
+    },
+    loadError: (state) => {
+      state.fetchData = ['Error Fetching :('];
+    },
     increment: (state) => {
       state.value += 1;
     },
