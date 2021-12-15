@@ -15,7 +15,7 @@ export const slice = createSlice({
   initialState,
   name: 'example',
   reducers: {
-    fetch: (state) => {},
+    fetch: () => {},
     loaded: (state, action: PayloadAction<{ data: unknown[] }>) => {
       state.fetchData = action.payload.data;
     },

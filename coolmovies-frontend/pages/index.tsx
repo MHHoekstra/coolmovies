@@ -24,7 +24,12 @@ const Home: NextPage = () => {
 };
 
 const styles = {
-  root: css({}),
+  root: css({
+    height: '100vh',
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+  }),
 };
 
 export default Home;
