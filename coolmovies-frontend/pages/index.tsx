@@ -1,7 +1,6 @@
 import { css } from '@emotion/react';
 import {
   Button,
-  Collapse,
   Paper,
   TextField,
   Tooltip,
