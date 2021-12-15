@@ -38,8 +38,8 @@ There are a couple of additional things that we would like to see in your submis
 
 1. Our designers don't like the default MUI blue. Please change this.
 2. Make the hardcoded GraphQL URL an environment variable.
-3. Improve the folder structure of the frontend application how you see fit.
-4. Add a custom svg icon from your local machine.
+3. Improve the folder structure of the frontend application how you see fit. (It's intentionally not great)
+4. Add the custom `edit.svg` from the `public` folder as an icon to launch editing the review.
 5. Add a unit testing framework of your choice, and some unit tests around the more complex areas of your code.
 
 ## Requirements
