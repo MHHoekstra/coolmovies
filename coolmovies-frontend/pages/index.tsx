@@ -1,3 +1,4 @@
+import { css } from '@emotion/react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -8,7 +9,7 @@ const Home: NextPage = () => {
   const dispatch = useAppDispatch();
   const exampleState = useAppSelector((state) => state.example);
   return (
-    <div className={styles.container}>
+    <div className={styles.container} css={css({ background: 'red' })}>
       <button onClick={() => dispatch(exampleActions.increment())}>
         {`Increment with Redux! Value: ${exampleState.value}`}
       </button>
