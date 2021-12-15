@@ -10,6 +10,9 @@ const Home: NextPage = () => {
       <button onClick={() => dispatch(exampleActions.increment())}>
         {`Increment with Redux! Value: ${exampleState.value}`}
       </button>
+      <span>
+        {`Side Effect Count from Epic (Gets run on odd values): ${exampleState.sideEffectCount}`}
+      </span>
     </div>
   );
 };

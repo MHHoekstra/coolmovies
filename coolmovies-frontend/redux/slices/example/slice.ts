@@ -2,10 +2,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface ExampleState {
   value: number;
+  sideEffectCount: number;
 }
 
 const initialState: ExampleState = {
   value: 0,
+  sideEffectCount: 0,
 };
 
 export const slice = createSlice({
@@ -14,6 +16,9 @@ export const slice = createSlice({
   reducers: {
     increment: (state) => {
       state.value += 1;
+    },
+    epicSideEffect: (state) => {
+      state.sideEffectCount += 1;
     },
   },
 });
