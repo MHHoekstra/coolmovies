@@ -16,6 +16,9 @@ export const slice = createSlice({
   name: 'example',
   reducers: {
     fetch: () => {},
+    clearData: (state) => {
+      state.fetchData = undefined;
+    },
     loaded: (state, action: PayloadAction<{ data: unknown[] }>) => {
       state.fetchData = action.payload.data;
     },
