@@ -16,7 +16,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
   React.useEffect(() => {
     const client = new ApolloClient({
       cache: new InMemoryCache(),
-      uri: 'http://localhost:5000/graphql',
+      uri: '/graphql',
     });
 
     const store = createStore({ epicDependencies: { client } });
