@@ -78,7 +78,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final ValueNotifier<Map<String,dynamic>?> _data = ValueNotifier({ 'title': 'Hello world!'});
+  final ValueNotifier<Map<String,dynamic>?> _data = ValueNotifier(null);
   int _counter = 0;
 
   void _incrementCounter() {
@@ -157,12 +157,27 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               const Text(
-                'You have pushed the button this many times:',
+"""Thank you for taking the time to take our test. We really appreciate it.
+All the information on what is required can be found in the README at the root of this repo.
+Please dont spend ages on this and just get through as much of it as you can.
+Good luck! :)""", textAlign: TextAlign.center,
               ),
-              Text(
-                '$_counter',
-                style: Theme.of(context).textTheme.headline4,
+              const SizedBox(height: 16),
+              TextButton.icon(
+                onPressed: _incrementCounter,
+                icon: const Icon(Icons.add),
+                label: Text('Increment: $_counter'),
+                style: TextButton.styleFrom(
+                  primary: Colors.white,
+                  backgroundColor: Colors.blue,
+                ),
               ),
+              OutlinedButton.icon(
+                onPressed: _fetchData,
+                icon: const Icon(Icons.download),
+                label: const Text('Fetch data'),
+              ),
+              const SizedBox(height: 16),
               ValueListenableBuilder(
                 valueListenable: _data,
                 builder: (BuildContext context, Map<String, dynamic>? data, Widget? _) {
@@ -179,20 +194,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     Container();
                 }
               ),
-              const SizedBox(height: 16),
-              TextButton.icon(
-                onPressed: _incrementCounter,
-                icon: const Icon(Icons.add),
-                label: const Text('Increment by 1'),
-                style: TextButton.styleFrom(
-                  primary: Colors.white,
-                  backgroundColor: Colors.blue,
-                ),
-              ),
-              OutlinedButton(
-                onPressed: _fetchData,
-                child: const Text('Fetch data'),
-              )
             ],
           ),
         ),
