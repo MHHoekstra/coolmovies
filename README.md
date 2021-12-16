@@ -8,7 +8,7 @@
 
 # Introduction: Coolmovies challenge
 
-TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO
+Both challenges (web and mobile) requires `coolmovies-backend` running. Check it out below.
 
 # Web version challenge
 
