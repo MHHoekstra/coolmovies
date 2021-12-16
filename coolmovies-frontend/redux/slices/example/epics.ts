@@ -44,7 +44,6 @@ const exampleQuery = gql`
         movieDirectorId
         userCreatorId
         releaseDate
-        cover
       }
     }
   }
