@@ -22,6 +22,7 @@ There are 2 main components that must be developed for this feature: (You have f
 
 1. Listing of the movie reviews.
 2. Editing the existing movie reviews.
+3. Adding additional reviews.
 
 The feature must be available on the `/reviews` endpoint of the application.
 
