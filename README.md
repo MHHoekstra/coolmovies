@@ -12,8 +12,6 @@ Both challenges (web and mobile) requires `coolmovies-backend` running. Check it
 
 Please work on this project like you would your normal job. We don't want to see mono-commits and for your commit history to be "First Commit" -> "Project Finished". "First Commit" -> "Add component" -> "Add component" -> "Editing of reviews" -> ... is preferred.
 
-**You will be evaluated on your UI/UX as we believe this is an important skill to have. Please put time and effort into this.**
-
 # Web version challenge
 
 Please take a look at the README inside of `coolmovies-frontend` for the details.
