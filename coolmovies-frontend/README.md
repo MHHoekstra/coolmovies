@@ -4,7 +4,7 @@ You have to add the cool movies review feature to the existing `coolmovies-front
 
 We have created a basic app for you to get started in.
 
-What's been setup for you:
+What tooling has been setup for you:
 
 - [Next.js](https://nextjs.org/) (Build Framework)
 - [MUI](https://mui.com/) (Component Library)
@@ -18,6 +18,8 @@ We are providing you a GraphQL API mock application to consume.
 
 ## Acceptance Criteria
 
+**You will be evaluated on your UI/UX as we believe this is an important skill to have. Please put time and effort into this.**
+
 There are 2 main components that must be developed for this feature: (You have flexibility on the UI/UX for this)
 
 1. Listing of the movie reviews.
@@ -27,6 +29,8 @@ There are 2 main components that must be developed for this feature: (You have f
 The feature must be available on the `/reviews` endpoint of the application.
 
 The design must be responsive.
+
+You will be evaluated against your ability to understand and use the tooling provided and mimic existing patterns that are shown in the examples.
 
 There are a couple of additional things that we would like to see in your submission.
 

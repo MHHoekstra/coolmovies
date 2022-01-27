@@ -8,6 +8,8 @@ We've setup GraphQL for you. We recommend that you work on an emulator only, the
 
 ## Acceptance Criteria
 
+**You will be evaluated on your UI/UX as we believe this is an important skill to have. Please put time and effort into this.**
+
 For your solution to be accepted it is required that your application is able to:
 
 1. List all the available movies, showing at least the title
