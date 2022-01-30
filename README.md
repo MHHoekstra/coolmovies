@@ -24,7 +24,7 @@ Please take a look at the README inside of `coolmovies-mobile` for the details.
 
 - Docker, a recent version (>= 20)
 - Docker Compose (one compatible with above docker)
-- Your local ports 5432 and 5000 free (not running another postgres server, for instance)
+- Your local ports 5432 and 5001 are free (not running another postgres server, for instance)
 
 You need docker and docker compose installed on your machine. It supports Linux, MacOS and Windows.
 
@@ -37,9 +37,11 @@ https://docs.docker.com/compose/install/
     cd coolmovies-backend
     docker-compose up
 
-Wait for a log message like this: `PostGraphile v4.12.3 server listening on port 5000`
+Wait for a log message like this: `PostGraphile v4.12.3 server listening on port 5000` (just keep in mind that we are going to use port 5001)
 
-Now try to connect to GraphiQL: http://localhost:5000/graphiql
+Now try to connect to GraphiQL and play around with the schema: http://localhost:5001/graphiql
+
+The actual endpoint to run your queries and mutations: http://localhost:5001/graphql
 
 ## Play around with some examples
 

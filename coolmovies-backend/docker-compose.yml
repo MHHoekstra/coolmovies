@@ -28,7 +28,7 @@ services:
     networks:
         - network
     ports:
-        - 5000:5000
+        - 5001:5000
     command: ["--connection", "${DATABASE_URL}", "--port", "5000", "--schema", "public", "--append-plugins", "postgraphile-plugin-connection-filter", "--enhance-graphiql"]
 
 networks:

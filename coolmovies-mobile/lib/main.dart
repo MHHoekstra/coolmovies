@@ -1,19 +1,21 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 void main() async {
-    // We're using HiveStore for persistence,
+  // We're using HiveStore for persistence,
   // so we need to initialize Hive.
   await initHiveForFlutter();
 
   final HttpLink httpLink = HttpLink(
-    'http://10.0.2.2:5000/graphql',
+    Platform.isAndroid
+      ? 'http://10.0.2.2:5001/graphql'
+      : 'http://localhost:5001/graphql',
   );
 
   final AuthLink authLink = AuthLink(
     getToken: () async => 'Bearer <YOUR_PERSONAL_ACCESS_TOKEN>',
-    // OR
-    // getToken: () => 'Bearer <YOUR_PERSONAL_ACCESS_TOKEN>',
   );
 
   final Link link = authLink.concat(httpLink);
@@ -21,7 +23,6 @@ void main() async {
   ValueNotifier<GraphQLClient> client = ValueNotifier(
     GraphQLClient(
       link: link,
-      // The default store is the InMemoryStore, which does NOT persist to disk
       cache: GraphQLCache(store: HiveStore()),
     ),
   );
@@ -93,6 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _fetchData() async {
+    print('Fetching data...');
     var client = GraphQLProvider.of(context).value;
 
     final QueryResult result = await client.query(
@@ -102,10 +104,17 @@ class _MyHomePageState extends State<MyHomePage> {
             allMovies {
               nodes {
                 id
-                title
+                imgUrl
                 movieDirectorId
                 userCreatorId
+                title
                 releaseDate
+                nodeId
+                userByUserCreatorId {
+                  id
+                  name
+                  nodeId
+                }
               }
             }
           }
@@ -136,65 +145,70 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: Center(
-          child: Column(
-            // Column is also a layout widget. It takes a list of children and
-            // arranges them vertically. By default, it sizes itself to fit its
-            // children horizontally, and tries to be as tall as its parent.
-            //
-            // Invoke "debug painting" (press "p" in the console, choose the
-            // "Toggle Debug Paint" action from the Flutter Inspector in Android
-            // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-            // to see the wireframe for each widget.
-            //
-            // Column has various properties to control how it sizes itself and
-            // how it positions its children. Here we use mainAxisAlignment to
-            // center the children vertically; the main axis here is the vertical
-            // axis because Columns are vertical (the cross axis would be
-            // horizontal).
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const Text(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Center(
+            child: Column(
+              // Column is also a layout widget. It takes a list of children and
+              // arranges them vertically. By default, it sizes itself to fit its
+              // children horizontally, and tries to be as tall as its parent.
+              //
+              // Invoke "debug painting" (press "p" in the console, choose the
+              // "Toggle Debug Paint" action from the Flutter Inspector in Android
+              // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
+              // to see the wireframe for each widget.
+              //
+              // Column has various properties to control how it sizes itself and
+              // how it positions its children. Here we use mainAxisAlignment to
+              // center the children vertically; the main axis here is the vertical
+              // axis because Columns are vertical (the cross axis would be
+              // horizontal).
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                const Padding(
+                  padding: EdgeInsets.only(top: 36.0),
+                  child: Text(
 """Thank you for taking the time to take our test. We really appreciate it.
 All the information on what is required can be found in the README at the root of this repo.
 Please dont spend ages on this and just get through as much of it as you can.
 Good luck! :)""", textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 16),
-              TextButton.icon(
-                onPressed: _incrementCounter,
-                icon: const Icon(Icons.add),
-                label: Text('Increment: $_counter'),
-                style: TextButton.styleFrom(
-                  primary: Colors.white,
-                  backgroundColor: Colors.blue,
+                  ),
                 ),
-              ),
-              OutlinedButton.icon(
-                onPressed: _fetchData,
-                icon: const Icon(Icons.download),
-                label: const Text('Fetch data'),
-              ),
-              const SizedBox(height: 16),
-              ValueListenableBuilder(
-                valueListenable: _data,
-                builder: (BuildContext context, Map<String, dynamic>? data, Widget? _) {
-                  return data != null ?
-                    Container(
-                      padding: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: Colors.grey[300],
-                        border: Border.all(color: Colors.grey.shade700, width: 1),
-                        borderRadius: BorderRadius.circular(4)
-                      ),
-                      child: Text(data.toString()),
-                    ) :
-                    Container();
-                }
-              ),
-            ],
+                const SizedBox(height: 16),
+                TextButton.icon(
+                  onPressed: _incrementCounter,
+                  icon: const Icon(Icons.add),
+                  label: Text('Increment: $_counter'),
+                  style: TextButton.styleFrom(
+                    primary: Colors.white,
+                    backgroundColor: Colors.blue,
+                  ),
+                ),
+                OutlinedButton.icon(
+                  onPressed: _fetchData,
+                  icon: const Icon(Icons.download),
+                  label: const Text('Fetch data'),
+                ),
+                const SizedBox(height: 16),
+                ValueListenableBuilder(
+                  valueListenable: _data,
+                  builder: (BuildContext context, Map<String, dynamic>? data, Widget? _) {
+                    return data != null ?
+                      Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          border: Border.all(color: Colors.grey.shade700, width: 1),
+                          borderRadius: BorderRadius.circular(4)
+                        ),
+                        child: Text(data.toString()),
+                      ) :
+                      Container();
+                  }
+                ),
+              ],
+            ),
           ),
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.

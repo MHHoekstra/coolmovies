@@ -4,7 +4,7 @@ module.exports = {
     return [
       {
         source: '/graphql',
-        destination: 'http://localhost:5000/graphql',
+        destination: 'http://localhost:5001/graphql',
       },
     ];
   },

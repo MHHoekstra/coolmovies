@@ -46,7 +46,8 @@ create table movies
 		constraint movies_user_id_fk
 			references users
 				on update cascade on delete cascade,
-	release_date date not null
+	release_date date not null,
+	img_url varchar not null
 );
 
 alter table movies owner to postgres;

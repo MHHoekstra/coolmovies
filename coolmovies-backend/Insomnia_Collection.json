@@ -340,7 +340,7 @@
       "modified": 1628730604692,
       "created": 1628633815878,
       "name": "Base Environment",
-      "data": { "schema": "http", "url": "localhost:5000/graphql" },
+      "data": { "schema": "http", "url": "localhost:5001/graphql" },
       "dataPropertyOrder": { "&": ["schema", "url"] },
       "color": null,
       "isPrivate": false,

@@ -40,10 +40,17 @@ const exampleQuery = gql`
     allMovies {
       nodes {
         id
-        title
+        imgUrl
         movieDirectorId
         userCreatorId
+        title
         releaseDate
+        nodeId
+        userByUserCreatorId {
+          id
+          name
+          nodeId
+        }
       }
     }
   }
